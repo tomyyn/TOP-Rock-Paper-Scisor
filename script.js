@@ -3,9 +3,9 @@ function computerPlay()
 {
     let randN = Math.floor(Math.random()*3);
     let retVal;
-    if (randN==0) retVal="ROCK";
-    else if (randN==1) retVal="PAPER";
-    else retVal="SCISOR";
+    if (randN==0) retVal="rock";
+    else if (randN==1) retVal="paper";
+    else retVal="scisor";
     
     return retVal 
 }
