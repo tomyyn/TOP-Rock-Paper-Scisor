@@ -12,13 +12,12 @@ function computerPlay()
 
 //Verify if an input is valid
 function checkInput(str){
-    str=str.toLowerCase();
     return(str=="rock"||str=="paper"||str=="scisor")
 }
 
 //Read user input until it is correct
 function getInput(){
-    let input = window.prompt("Enter your selection!")
+    let input = window.prompt("Enter your selection!").toLowerCase()
     while(!checkInput(input)){
         console.log("Invalid selection");
         input = window.prompt("Enter your selection!")
