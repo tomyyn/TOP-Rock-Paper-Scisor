@@ -12,6 +12,7 @@ function computerPlay()
 
 //Verify if an input is valid
 function checkInput(str){
+    str=str.toLowerCase();
     return(str=="rock"||str=="paper"||str=="scisor")
 }
 
