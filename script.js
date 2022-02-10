@@ -6,6 +6,7 @@ function computerPlay()
     if (randN==0) retVal="ROCK";
     else if (randN==1) retVal="PAPER";
     else retVal="SCISOR";
+    
     return retVal 
 }
 
@@ -21,8 +22,8 @@ function getInput(){
         console.log("Invalid selection");
         input = window.prompt("Enter your selection!")
     }
-    return input;
 
+    return input;
 }
 
 //Play one round
@@ -32,11 +33,10 @@ function playRound(playerSelection,computerSelection)
 
     playerSelection=playerSelection.toLowerCase();
     computerSelection=computerSelection.toLowerCase();
-    console.log(computerSelection)
     if(playerSelection==computerSelection) retVal="Draw"; 
     else if((playerSelection=="rock" && computerSelection=="scisor")||(playerSelection=="scisor" && computerSelection=="paper")||(playerSelection=="paper" && computerSelection=="rock")) retVal="Win";
     else retVal="Loose";
-    console.log(retVal)
+
     return retVal;
 }
 
@@ -52,11 +52,22 @@ function game(){
         if(aux=="Draw") aux=`Draw! you both choosed ${playerSelection}`; 
         else if (aux=="Win") {
             aux=`You won! ${playerSelection} beats ${computerSelection}`;
+            playerV++;
         }
         else {
             aux=`You lost! ${computerSelection} beats ${playerSelection}`;
+            computerV++;
         }
-        
-        console.log(aux);
+
+        console.log(aux)
     }
+
+    if(playerV>computerV) aux="You won";
+    else if(computerV>playerV) aux="You lost"
+    else aux="Draw"
+
+    console.log(aux + ` ${playerV} to ${computerV}` + "\nThanks for playing!");
 }
+
+
+game()
