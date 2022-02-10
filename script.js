@@ -31,8 +31,6 @@ function playRound(playerSelection,computerSelection)
 {
     let retVal;
 
-    playerSelection=playerSelection.toLowerCase();
-    computerSelection=computerSelection.toLowerCase();
     if(playerSelection==computerSelection) retVal="Draw"; 
     else if((playerSelection=="rock" && computerSelection=="scisor")||(playerSelection=="scisor" && computerSelection=="paper")||(playerSelection=="paper" && computerSelection=="rock")) retVal="Win";
     else retVal="Loose";
