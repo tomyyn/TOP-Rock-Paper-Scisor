@@ -15,17 +15,6 @@ function checkInput(str){
     return(str=="rock"||str=="paper"||str=="scisor")
 }
 
-//Read user input until it is correct
-function getInput(){
-    let input = window.prompt("Enter your selection!").toLowerCase()
-    while(!checkInput(input)){
-        console.log("Invalid selection");
-        input = window.prompt("Enter your selection!")
-    }
-
-    return input;
-}
-
 //Play one round
 function playRound(playerSelection,computerSelection)
 {
@@ -71,6 +60,14 @@ function rpsButtonListener(e){
     console.log(e.target.id);
 }
 
+function resetButtonListener(e){
+    console.log("You pressed reset!");
+}
+
+
 
 buttons = document.querySelectorAll(".buttons button")
 buttons.forEach((button)=>{button.addEventListener("click",rpsButtonListener)})
+
+rst = document.querySelector(".reset button");
+rst.addEventListener("click", resetButtonListener);
