@@ -1,3 +1,5 @@
+let playerV=0, computerV=0;
+
 //Choose computer selection
 function computerPlay()
 {
@@ -5,23 +7,17 @@ function computerPlay()
     let retVal;
     if (randN==0) retVal="rock";
     else if (randN==1) retVal="paper";
-    else retVal="scisor";
+    else retVal="scissor";
     
     return retVal 
-}
-
-//Verify if an input is valid
-function checkInput(str){
-    return(str=="rock"||str=="paper"||str=="scisor")
 }
 
 //Play one round
 function playRound(playerSelection,computerSelection)
 {
     let retVal;
-
     if(playerSelection==computerSelection) retVal="Draw"; 
-    else if((playerSelection=="rock" && computerSelection=="scisor")||(playerSelection=="scisor" && computerSelection=="paper")||(playerSelection=="paper" && computerSelection=="rock")) retVal="Win";
+    else if((playerSelection=="rock" && computerSelection=="scissor")||(playerSelection=="scissor" && computerSelection=="paper")||(playerSelection=="paper" && computerSelection=="rock")) retVal="Win";
     else retVal="Loose";
 
     return retVal;
@@ -29,7 +25,7 @@ function playRound(playerSelection,computerSelection)
 
 //Main game loop
 function game(){
-    let playerV=0, computerV=0, aux, playerSelection,computerSelection;
+    let aux, playerSelection,computerSelection;
     for(let i=0;i<5;i++){     
         playerSelection=getInput();
         computerSelection=computerPlay();
@@ -56,14 +52,23 @@ function game(){
     console.log(aux + ` ${playerV} to ${computerV}` + "\nThanks for playing!");
 }
 
+function updImages(who, img){
+    im = document.querySelector(`#${who}`);
+    im.src = `./imgs/${img}.png`
+}
+
 function rpsButtonListener(e){
-    console.log(e.target.id);
+    let comPlay = computerPlay();
+    let res = playRound(e.target.id,comPlay)
+    console.log(res);
+
+    updImages("playerChoose",e.target.id)
+    updImages("computerChoose",comPlay)
 }
 
 function resetButtonListener(e){
     console.log("You pressed reset!");
 }
-
 
 
 buttons = document.querySelectorAll(".buttons button")
