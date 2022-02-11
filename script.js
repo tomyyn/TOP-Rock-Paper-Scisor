@@ -16,12 +16,15 @@ function updScore(res,playerSelection,computerSelection){
     let aux;
     if(res=="Draw") aux=`Draw!\nyou both choosed ${playerSelection}`; 
     else if (res=="Win") {
-        aux=`You won!\n${playerSelection} beats ${computerSelection}`;
-        playerV++;
+        aux=`You won! \n ${playerSelection} beats ${computerSelection}`;
+
+        score=document.querySelector(".player.score");
+        score.textContent=++playerV;
     }
     else {
         aux=`You lost!\n${computerSelection} beats ${playerSelection}`;
-        computerV++;
+        score=document.querySelector(".computer.score");
+        score.textContent=++computerV;
     }
 
     roundRes=document.querySelector("#report")
