@@ -1,7 +1,63 @@
 body{
-    height: 100hv;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items:stretch;
+    color:white;
+    background-color: rgb(65, 65, 212);
+    margin:0px;
+}
+
+
+.header,
+.footer{
+    background-color: rgb(11, 11, 80);
+}
+
+.header{
+    height: 80px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.content{
+    display: flex;
+    flex-grow:1;
+    flex-direction: column;
+}
+
+.statusFields{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status img{
+    height: 200px;
+    width: 200px;
+    border:white;
+    border-radius: 20px;
+}
+
+
+.buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reset{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
