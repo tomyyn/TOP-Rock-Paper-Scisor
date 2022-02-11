@@ -67,5 +67,10 @@ function game(){
     console.log(aux + ` ${playerV} to ${computerV}` + "\nThanks for playing!");
 }
 
+function rpsButtonListener(e){
+    console.log(e.target.id);
+}
 
-game()
+
+buttons = document.querySelectorAll(".buttons button")
+buttons.forEach((button)=>{button.addEventListener("click",rpsButtonListener)})
