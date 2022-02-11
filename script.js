@@ -15,15 +15,15 @@ function computerPlay()
 function updScore(res,playerSelection,computerSelection){
     let aux;
     let color = "ivory"
-    if(res=="Draw") aux=`Draw! \r\n you both choosed ${playerSelection}`; 
+    if(res=="Draw") aux=`Draw! <br> you both choosed ${playerSelection}`; 
     else if (res=="Win") {
         score=document.querySelector(".player.score");
         score.textContent=++playerV;
         if(playerV<5){
-            aux=`You won! \r\n ${playerSelection} beats ${computerSelection}`;
+            aux=`You won! <br> ${playerSelection} beats ${computerSelection}`;
         }
         else{
-            aux="You won the game!! \r\n Thanks for playing :D \r\n Press Reset to start again";
+            aux="You won the game!! <br> Thanks for playing :D <br> Press Reset to start again";
             color="yellow";
         }
     }
@@ -31,16 +31,16 @@ function updScore(res,playerSelection,computerSelection){
         score=document.querySelector(".computer.score");
         score.textContent=++computerV;
         if(computerV<5){
-            aux=`You lost! \r\n ${computerSelection} beats ${playerSelection}`;
+            aux=`You lost! <br> ${computerSelection} beats ${playerSelection}`;
         }
         else{
-            aux="You lost the game!! \r\n Thanks for playing :D \r\n Press Reset to start again";
+            aux="You lost the game!! <br> Thanks for playing :D <br> Press Reset to start again";
             color="pink";
         }
     }
 
     roundRes=document.querySelector("#report")
-    roundRes.textContent=aux;
+    roundRes.innerHTML=aux;
     roundRes.style.color=color;
 
 }
@@ -75,13 +75,17 @@ function resetButtonListener(e){
     updImages("playerChoose","unknown");
     updImages("computerChoose","unknown");
 
-    let score;
-    score=document.querySelector(".player.score");
-    score.textContent=0;
+    let aux;
+    aux=document.querySelector(".player.score");
+    aux.textContent=0;
     playerV=0;
-    score=document.querySelector(".computer.score");
-    score.textContent=0;
+    aux=document.querySelector(".computer.score");
+    aux.textContent=0;
     computerV=0;
+
+    aux=document.querySelector("#report")
+    aux.textContent="";
+    aux.style.color="ivory";
 }
 
 
