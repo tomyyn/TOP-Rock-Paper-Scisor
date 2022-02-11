@@ -1,19 +1,7 @@
 body{
+    height: 100hv;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.text{
-    background-color: blue;
-    font-size: 42px;
-    font-weight: bolder;
-    flex: auto;
-}
-
-img{
-    height: 300px;
-    width: auto;
-    flex: auto;
 }

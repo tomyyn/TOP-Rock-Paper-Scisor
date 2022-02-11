@@ -5,12 +5,36 @@
     <title>Rock-Paper-Scisor!</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="text">Open the console to play!</div>
-    <img src="./imgs/RPS.jpg">
-    <script src="script.js"></script>
+    <div class="Header">Let's rock (paper-scissor)!</div>
+    <div class="content">
+        <div class="statusFields">
+            <div class=status>
+                <div>Player</div>
+                <div id="playerScore">0</div>
+                <img id="playerChoose" src="imgs/unknown.png">
+            </div>
+            <div class="report"></div>
+            <div class=status>
+                <div>Computer</div>
+                <div id="computerScore">0</div>
+                <img id="computerChoose" src="imgs/unknown.png">
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="rb">ROCK</button>
+            <button class="pb">PAPER</button>
+            <button class="sb">SCISSOR</button>
+        </div>
+        <div class="reset">
+            
+        </div>
+    </div>
+    <div clas="footer">Copyright © 2022 tomyyn</div>
+    
 </body>
 
 </html>
