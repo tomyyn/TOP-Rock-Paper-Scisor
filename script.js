@@ -12,6 +12,8 @@ function computerPlay()
     return retVal 
 }
 
+
+//Update the score and reflect the result of the play in the counters and report
 function updScore(res,playerSelection,computerSelection){
     let aux;
     let color = "ivory"
@@ -56,14 +58,16 @@ function playRound(playerSelection,computerSelection)
     updScore(retVal, playerSelection, computerSelection);
 }
 
+//Change status images
 function updImages(who, img){
     im = document.querySelector(`#${who}`);
     im.src = `./imgs/${img}.png`
 }
 
-
+//Listener for move selection buttons
 function rpsButtonListener(e){
     let comPlay = computerPlay();
+    //Return if the game has ended
     if((playerV>=5)||(computerV>=5)) return;
     updImages("playerChoose",e.target.id);
     updImages("computerChoose",comPlay);
@@ -72,9 +76,11 @@ function rpsButtonListener(e){
 }
 
 function resetButtonListener(e){
+    //Put ? images
     updImages("playerChoose","unknown");
     updImages("computerChoose","unknown");
 
+    //Reset counters
     let aux;
     aux=document.querySelector(".player.score");
     aux.textContent=0;
@@ -83,6 +89,7 @@ function resetButtonListener(e){
     aux.textContent=0;
     computerV=0;
 
+    //Clean report
     aux=document.querySelector("#report")
     aux.textContent="";
     aux.style.color="ivory";
