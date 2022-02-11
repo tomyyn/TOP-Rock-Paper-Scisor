@@ -14,21 +14,34 @@ function computerPlay()
 
 function updScore(res,playerSelection,computerSelection){
     let aux;
-    if(res=="Draw") aux=`Draw!\nyou both choosed ${playerSelection}`; 
+    let color = "ivory"
+    if(res=="Draw") aux=`Draw! \r\n you both choosed ${playerSelection}`; 
     else if (res=="Win") {
-        aux=`You won! \n ${playerSelection} beats ${computerSelection}`;
-
         score=document.querySelector(".player.score");
         score.textContent=++playerV;
+        if(playerV<5){
+            aux=`You won! \r\n ${playerSelection} beats ${computerSelection}`;
+        }
+        else{
+            aux="You won the game!! \r\n Thanks for playing :D \r\n Press Reset to start again";
+            color="yellow";
+        }
     }
     else {
-        aux=`You lost!\n${computerSelection} beats ${playerSelection}`;
         score=document.querySelector(".computer.score");
         score.textContent=++computerV;
+        if(computerV<5){
+            aux=`You lost! \r\n ${computerSelection} beats ${playerSelection}`;
+        }
+        else{
+            aux="You lost the game!! \r\n Thanks for playing :D \r\n Press Reset to start again";
+            color="pink";
+        }
     }
 
     roundRes=document.querySelector("#report")
     roundRes.textContent=aux;
+    roundRes.style.color=color;
 
 }
 
@@ -41,8 +54,6 @@ function playRound(playerSelection,computerSelection)
     else retVal="Loose";
 
     updScore(retVal, playerSelection, computerSelection);
-    
-    return retVal;
 }
 
 function updImages(who, img){
@@ -53,16 +64,24 @@ function updImages(who, img){
 
 function rpsButtonListener(e){
     let comPlay = computerPlay();
-
+    if((playerV>=5)||(computerV>=5)) return;
     updImages("playerChoose",e.target.id);
     updImages("computerChoose",comPlay);
     
-    let res = playRound(e.target.id,comPlay);
-    console.log(res);
+    playRound(e.target.id,comPlay);
 }
 
 function resetButtonListener(e){
-    console.log("You pressed reset!");
+    updImages("playerChoose","unknown");
+    updImages("computerChoose","unknown");
+
+    let score;
+    score=document.querySelector(".player.score");
+    score.textContent=0;
+    playerV=0;
+    score=document.querySelector(".computer.score");
+    score.textContent=0;
+    computerV=0;
 }
 
 
