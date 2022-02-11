@@ -12,6 +12,23 @@ function computerPlay()
     return retVal 
 }
 
+function updScore(res,playerSelection,computerSelection){
+    let aux;
+    if(res=="Draw") aux=`Draw!\nyou both choosed ${playerSelection}`; 
+    else if (res=="Win") {
+        aux=`You won!\n${playerSelection} beats ${computerSelection}`;
+        playerV++;
+    }
+    else {
+        aux=`You lost!\n${computerSelection} beats ${playerSelection}`;
+        computerV++;
+    }
+
+    roundRes=document.querySelector("#report")
+    roundRes.textContent=aux;
+
+}
+
 //Play one round
 function playRound(playerSelection,computerSelection)
 {
@@ -20,36 +37,9 @@ function playRound(playerSelection,computerSelection)
     else if((playerSelection=="rock" && computerSelection=="scissor")||(playerSelection=="scissor" && computerSelection=="paper")||(playerSelection=="paper" && computerSelection=="rock")) retVal="Win";
     else retVal="Loose";
 
+    updScore(retVal, playerSelection, computerSelection);
+    
     return retVal;
-}
-
-//Main game loop
-function game(){
-    let aux, playerSelection,computerSelection;
-    for(let i=0;i<5;i++){     
-        playerSelection=getInput();
-        computerSelection=computerPlay();
-        
-        aux=playRound(playerSelection,computerSelection);
-
-        if(aux=="Draw") aux=`Draw! you both choosed ${playerSelection}`; 
-        else if (aux=="Win") {
-            aux=`You won! ${playerSelection} beats ${computerSelection}`;
-            playerV++;
-        }
-        else {
-            aux=`You lost! ${computerSelection} beats ${playerSelection}`;
-            computerV++;
-        }
-
-        console.log(aux)
-    }
-
-    if(playerV>computerV) aux="You won";
-    else if(computerV>playerV) aux="You lost"
-    else aux="Draw"
-
-    console.log(aux + ` ${playerV} to ${computerV}` + "\nThanks for playing!");
 }
 
 function updImages(who, img){
@@ -57,13 +47,15 @@ function updImages(who, img){
     im.src = `./imgs/${img}.png`
 }
 
+
 function rpsButtonListener(e){
     let comPlay = computerPlay();
-    let res = playRound(e.target.id,comPlay)
-    console.log(res);
 
-    updImages("playerChoose",e.target.id)
-    updImages("computerChoose",comPlay)
+    updImages("playerChoose",e.target.id);
+    updImages("computerChoose",comPlay);
+    
+    let res = playRound(e.target.id,comPlay);
+    console.log(res);
 }
 
 function resetButtonListener(e){
